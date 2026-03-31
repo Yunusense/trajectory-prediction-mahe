@@ -1,4 +1,4 @@
-# Social Trajectory Transformer
+# Trajectory Prediction
 ## PS1 — Intent & Trajectory Prediction | MIT Bengaluru Hackathon
 A multi-modal Social Transformer that predicts the future trajectories
 of pedestrians and cyclists in urban autonomous driving scenarios.
@@ -32,23 +32,5 @@ python evaluate.py
 - Velocity-aware input embedding
 - Best-of-K evaluation (minADE@3, minFDE@3)
 ```
----
-**File 2 — requirements.txt:**
-```
-numpy==2.2.0
-torch>=2.0.0
-nuscenes-devkit==1.2.0
-matplotlib
-```
----
-**File 3 — structure (create these empty files):**
-```
-social-trajectory-transformer/
-├── README.md
-├── requirements.txt
-├── config.py          ← paste Cell 3 code
-├── dataset.py         ← paste Cell 5+6 code
-├── model.py           ← paste Cell 7 code
-├── train.py           ← paste Cell 9 code
-├── evaluate.py        ← paste Cell 10 code
-├── metrics.py         ← paste Cell 8 code
+
+
