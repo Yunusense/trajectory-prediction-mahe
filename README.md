@@ -1,26 +1,54 @@
-# Intent & Trajectory Prediction — MaHe Mobility Hackathon
-
+# Social Trajectory Transformer
+## PS1 — Intent & Trajectory Prediction | MIT Bengaluru Hackathon
+A multi-modal Social Transformer that predicts the future trajectories
+of pedestrians and cyclists in urban autonomous driving scenarios.
 ## Problem Statement
-Predicting future coordinates (next 3 seconds) of pedestrians 
-and cyclists based on 2 seconds of past motion in an L4 urban environment.
-
-## Model Results
-| Metric | Score |
-|--------|-------|
-| ADE | 0.3127 m |
-| FDE | 0.5837 m |
-| Best Epoch | 46 |
-
+Given 2 seconds of past (x,y) motion, predict the next 3 seconds
+of future positions for pedestrians and cyclists.
+## Model Architecture
+- **Encoder**: 4-layer Transformer with positional encoding
+- **Decoder**: Multi-modal decoder with 3 learnable mode queries
+- **Input**: 4 past positions (2s at 2Hz) per agent
+- **Output**: 3 possible future trajectories × 6 positions (3s at 2Hz)
+- **Parameters**: ~2M (trained from scratch)
+## Results
+| Metric | Value | Description |
+|--------|-------|-------------|
+| ADE | 0.3106 m | Average Displacement Error (lower is better) |
+| FDE | 0.5734 m | Final Displacement Error (lower is better) |
 ## Dataset
-Trained on the nuScenes dataset.
-Download from: https://www.nuscenes.org/
-
+- nuScenes trainval — 850 scenes, ~60,000 trajectories
+- Agents: pedestrians + cyclists
+- No pretrained weights used
 ## How to Run
-1. Download nuScenes dataset
-2. Open the notebook
-3. Run all cells
-
-## Tech Stack
-- Python
-- PyTorch
-- nuScenes
+```bash
+pip install nuscenes-devkit numpy torch
+python train.py
+python evaluate.py
+```
+## Key Features
+- Multi-modal prediction (3 most likely paths)
+- Social context via self-attention
+- Velocity-aware input embedding
+- Best-of-K evaluation (minADE@3, minFDE@3)
+```
+---
+**File 2 — requirements.txt:**
+```
+numpy==2.2.0
+torch>=2.0.0
+nuscenes-devkit==1.2.0
+matplotlib
+```
+---
+**File 3 — structure (create these empty files):**
+```
+social-trajectory-transformer/
+├── README.md
+├── requirements.txt
+├── config.py          ← paste Cell 3 code
+├── dataset.py         ← paste Cell 5+6 code
+├── model.py           ← paste Cell 7 code
+├── train.py           ← paste Cell 9 code
+├── evaluate.py        ← paste Cell 10 code
+├── metrics.py         ← paste Cell 8 code
