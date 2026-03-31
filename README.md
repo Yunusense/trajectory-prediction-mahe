@@ -1,5 +1,5 @@
 # Trajectory Prediction
-## PS1 — Intent & Trajectory Prediction | MIT Bengaluru Hackathon
+## PS1 — Intent & Trajectory Prediction | MAHE Mobility Hackathon
 A multi-modal Social Transformer that predicts the future trajectories
 of pedestrians and cyclists in urban autonomous driving scenarios.
 ## Problem Statement
